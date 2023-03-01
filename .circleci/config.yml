@@ -3,10 +3,6 @@ version: 2.1
 # Jobs qui seront executés
 jobs:
   build:
-    # Execution uniquement sur la branche "master"
-    branches:
-      only:
-        - master
     # Environnement Java 8 ou supérieur
     docker:
       - image: cimg/openjdk:8.0
@@ -37,4 +33,9 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - build
+      - build:
+        # Execution uniquement sur la branche "master"
+        filters:
+          branches:
+            only:
+            -  master
