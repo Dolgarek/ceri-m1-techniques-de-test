@@ -1,5 +1,10 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
+### QUEZEL-PERRON Théo
+#### GRP ILSEN-Alt
+[![<Dolgarek>](https://circleci.com/gh/Dolgarek/ceri-m1-techniques-de-test.svg?style=svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[![codecov](https://codecov.io/gh/Dolgarek/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=632K7U2LMS)](https://codecov.io/gh/Dolgarek/ceri-m1-techniques-de-test)
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
