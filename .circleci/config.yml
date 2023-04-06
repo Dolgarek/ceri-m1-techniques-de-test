@@ -1,4 +1,7 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@3.2.4
+
 # Simple commentaire pour valider le rendu du TP2
 # Jobs qui seront executés
 jobs:
@@ -20,6 +23,7 @@ jobs:
           name: Run unit tests
           command: |
             mvn clean test
+      - codecov/upload
 
 # Workflows
 workflows:
