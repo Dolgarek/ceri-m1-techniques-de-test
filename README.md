@@ -4,6 +4,7 @@
 #### GRP ILSEN-Alt
 [![<Dolgarek>](https://circleci.com/gh/Dolgarek/ceri-m1-techniques-de-test.svg?style=svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![codecov](https://codecov.io/gh/Dolgarek/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=632K7U2LMS)](https://codecov.io/gh/Dolgarek/ceri-m1-techniques-de-test)
+![Checkstyle](docs/badges/checkstyle-result.svg)
 
 ## Introduction
 
