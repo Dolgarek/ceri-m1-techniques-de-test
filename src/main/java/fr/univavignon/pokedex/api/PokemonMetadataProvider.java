@@ -12,7 +12,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
     private void fillPokemonMetadataList() {
         for (int i = 0; i < 150; i++) {
             if (i == 0) {
-                this.pokemonMetadataList.add(new PokemonMetadata(i, "Bulbizzare", 126, 126, 90));
+                this.pokemonMetadataList.add(new PokemonMetadata(i, "Bulbizarre", 126, 126, 90));
             }
             else if (i == 133) {
                 this.pokemonMetadataList.add(new PokemonMetadata(i, "Aquali", 186, 168, 260));

@@ -32,7 +32,7 @@ public class Pokedex implements IPokedex{
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-        if (id < this.pokemons.size()) {
+        if (id < this.pokemons.size() && id >= 0) {
             return this.pokemons.get(id);
         }
         else {
@@ -53,7 +53,7 @@ public class Pokedex implements IPokedex{
     }
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
         return this.iPokemonFactory.createPokemon(index, cp, hp,  dust, candy);
     }
 

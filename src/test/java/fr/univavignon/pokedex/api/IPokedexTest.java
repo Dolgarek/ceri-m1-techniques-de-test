@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class IPokedexTest {
 
 
-    IPokedex mockPokedex = mock(IPokedex.class);
+    /*IPokedex mockPokedex = mock(IPokedex.class);
     Pokemon bulbizarre=new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,56);
     Pokemon aquali=new Pokemon(133,"Aquali",186,168,260,2729,202,5000,4,100);
     List<Pokemon> pokemonList;
@@ -144,5 +144,94 @@ public class IPokedexTest {
         mockPokedex.addPokemon(bulbizarre);
         List<Pokemon> list=mockPokedex.getPokemons(comparator);
         assertEquals(list.get(0).getIndex(),bulbizarre.getIndex());
+    }*/
+    IPokedex pokedex;
+    Pokemon bulbizarre = new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,56);
+    Pokemon aquali = new Pokemon(133,"Aquali",186,168,260,2729,202,5000,4,100);
+    PokemonMetadata bulbizarreMetadata = new PokemonMetadata(
+            bulbizarre.getIndex(),
+            bulbizarre.getName(),
+            bulbizarre.getAttack(),
+            bulbizarre.getDefense(),
+            bulbizarre.getStamina()
+    );
+
+    @BeforeEach
+    public void setUp() {
+        IPokedexFactory pokedexFactory = new PokedexFactory();
+        IPokemonMetadataProvider pokemonMetadataProvider = PokemonMetadataProvider.getPokemonMetadataProvider();
+        IPokemonFactory pokemonFactory = new PokemonFactory();
+        pokedex = pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory);
+    }
+
+    @Test
+    public void shouldAddPokemon() {
+        int index = pokedex.addPokemon(bulbizarre);
+        assertEquals(0, index);
+    }
+
+    @Test
+    public void shouldGetSize() {
+        assertEquals(0, pokedex.size());
+        pokedex.addPokemon(bulbizarre);
+        assertEquals(1, pokedex.size());
+    }
+
+    @Test
+    public void shouldThrowPokedexExceptionWhenNegativeValue() {
+        assertThrows(PokedexException.class, () -> pokedex.getPokemon(-1));
+    }
+
+    @Test
+    public void shouldThrowPokedexExceptionWhenOutOfBOund() {
+        assertThrows(PokedexException.class, () -> pokedex.getPokemon(1));
+    }
+
+    @Test
+    public void shouldGetPokemon() throws PokedexException {
+        pokedex.addPokemon(bulbizarre);
+        assertEquals(0, pokedex.getPokemon(0).getIndex());
+    }
+
+    @Test
+    public void shouldGetPokemonList(){
+        ArrayList<Pokemon> comparingList = new ArrayList<>();
+        comparingList.add(bulbizarre);
+
+        pokedex.addPokemon(bulbizarre);
+        List<Pokemon> comparedList = pokedex.getPokemons();
+        assertEquals(comparingList, comparedList);
+    }
+
+    @Test
+    public void shouldSortList(){
+        pokedex.addPokemon(aquali);
+        pokedex.addPokemon(bulbizarre);
+        List<Pokemon> list = pokedex.getPokemons(PokemonComparators.INDEX);
+        assertEquals(bulbizarre.getIndex(), list.get(0).getIndex());
+    }
+
+    @Test
+    public void shouldCreatePokemonWithCorrectMetaData() throws PokedexException {
+        Pokemon createdBulbizarre = pokedex.createPokemon(0,613, 64,4000, 4);
+        assertEquals(bulbizarre.getIndex(), createdBulbizarre.getIndex());
+        assertEquals(bulbizarre.getCp(), createdBulbizarre.getCp());
+        assertEquals(bulbizarre.getHp(), createdBulbizarre.getHp());
+        assertEquals(bulbizarre.getDust(), createdBulbizarre.getDust());
+        assertEquals(bulbizarre.getCandy(), createdBulbizarre.getCandy());
+        assertEquals(bulbizarre.getName(), createdBulbizarre.getName());
+        assertEquals(bulbizarre.getAttack(), createdBulbizarre.getAttack());
+        assertEquals(bulbizarre.getDefense(), createdBulbizarre.getDefense());
+        assertEquals(bulbizarre.getStamina(), createdBulbizarre.getStamina());
+    }
+
+    @Test
+    public void shouldPokemonMetadataBeUnnafectedOnInit() throws PokedexException {
+        PokemonMetadata createdBulbizarreMetadata = pokedex.getPokemonMetadata(0);
+        assertEquals(bulbizarreMetadata.getIndex(), createdBulbizarreMetadata.getIndex());
+        assertEquals(bulbizarreMetadata.getName(), createdBulbizarreMetadata.getName());
+        assertEquals(bulbizarreMetadata.getAttack(), createdBulbizarreMetadata.getAttack());
+        assertEquals(bulbizarreMetadata.getDefense(), createdBulbizarreMetadata.getDefense());
+        assertEquals(bulbizarreMetadata.getStamina(), createdBulbizarreMetadata.getStamina());
     }
 }
