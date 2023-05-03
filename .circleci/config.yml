@@ -24,6 +24,47 @@ jobs:
           command: |
             mvn clean test
       - codecov/upload
+  
+  docs:
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - checkout
+      - run:
+          name: OpenJDK-PPA
+          command: sudo add-apt-repository ppa:openjdk-r/ppa
+      - run:
+          name: Update
+          command: sudo apt-get update
+      - run:
+          name: OpenJDK-Install
+          command: sudo apt-get install openjdk-11-jdk-headless -y
+      - run:
+          name: Docs-Build
+          command: javadoc -d docs src/main/java/fr/univavignon/pokedex/api/* 
+      - persist_to_workspace:
+          root: .
+          paths: docs
+
+  docs-deploy:
+    docker:
+      - image: node:20
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@3.0.0
+            git config user.email "explo8413@gmail.com"
+            git config user.name "Théo Quezel-Perron"
+      - add_ssh_keys:
+          fingerprints:
+            - "e4:3a:98:b2:d1:c5:30:d5:c9:e1:40:9f:c3:2e:bd:59"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist docs/
 
 # Workflows
 workflows:
@@ -36,3 +77,7 @@ workflows:
           branches:
             only:
             -  master
+      - docs
+      - docs-deploy:
+          requires:
+            - docs
