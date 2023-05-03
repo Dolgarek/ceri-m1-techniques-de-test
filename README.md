@@ -2,13 +2,13 @@
 
 ### QUEZEL-PERRON Théo
 #### GRP ILSEN-Alt
-![namebadge](https://img.shields.io/static/v1?label=Nom&message=Théo%20QUEZEL-PERRON&color=blue)
+![namebadge](https://img.shields.io/static/v1?label=Nom&message=Théo%20QUEZEL-PERRON&color=e942f5)
 ![groupbadge](https://img.shields.io/static/v1?label=Groupe&message=ILSEN-ALT-Gr1&color=lightgrey)
 
 [![<Dolgarek>](https://circleci.com/gh/Dolgarek/ceri-m1-techniques-de-test.svg?style=svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![codecov](https://codecov.io/gh/Dolgarek/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=632K7U2LMS)](https://codecov.io/gh/Dolgarek/ceri-m1-techniques-de-test)
 ![Checkstyle](docs/badges/checkstyle-result.svg)
-![Javadocs](https://img.shields.io/static/v1?label=JAVADOCS&message=LINK&color=FF69B4)(https://dolgarek.github.io/ceri-m1-techniques-de-test/)
+[![Javadocs](https://img.shields.io/static/v1?label=JAVADOCS&message=LINK&color=blue)](https://dolgarek.github.io/ceri-m1-techniques-de-test/)
 
 ## Introduction
 
