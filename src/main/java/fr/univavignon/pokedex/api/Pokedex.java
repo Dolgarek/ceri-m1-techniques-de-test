@@ -1,21 +1,25 @@
 package fr.univavignon.pokedex.api;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.ArrayList;
 
-public class Pokedex implements IPokedex{
+/**
+ *  Pokedex class.
+ * */
+public class Pokedex implements IPokedex {
 
     private List<Pokemon> pokemons;
 
-    private IPokemonMetadataProvider iPokemonMetadataProvider;
+    private IPokemonMetadataProvider metadataProvider;
 
-    private IPokemonFactory iPokemonFactory;
+    private IPokemonFactory pokemonFactory;
 
+    /** Constructor. */
     public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-        this.iPokemonMetadataProvider = metadataProvider;
-        this.iPokemonFactory = pokemonFactory;
+        this.metadataProvider = metadataProvider;
+        this.pokemonFactory = pokemonFactory;
         this.pokemons = new ArrayList<>();
     }
 
@@ -53,12 +57,18 @@ public class Pokedex implements IPokedex{
     }
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
-        return this.iPokemonFactory.createPokemon(index, cp, hp,  dust, candy);
+    public Pokemon createPokemon(
+            int index,
+            int cp,
+            int hp,
+            int dust,
+            int candy
+    ) throws PokedexException {
+        return this.pokemonFactory.createPokemon(index, cp, hp,  dust, candy);
     }
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        return this.iPokemonMetadataProvider.getPokemonMetadata(index);
+        return this.metadataProvider.getPokemonMetadata(index);
     }
 }

@@ -2,6 +2,9 @@ package fr.univavignon.pokedex.api;
 
 import java.util.ArrayList;
 
+/**
+ *  PokemonMetadaProvider class.
+ * */
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     private static PokemonMetadataProvider pokemonMetadataProvider;
@@ -23,6 +26,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
         }
     }
 
+    /** Provide an instance of the class. */
     public static synchronized PokemonMetadataProvider getPokemonMetadataProvider() {
         if (pokemonMetadataProvider == null) {
             pokemonMetadataProvider = new PokemonMetadataProvider();
