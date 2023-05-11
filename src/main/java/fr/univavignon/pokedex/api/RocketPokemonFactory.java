@@ -1,17 +1,11 @@
 package fr.univavignon.pokedex.api;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
-import org.apache.commons.collections4.map.UnmodifiableMap;
-
-import fr.univavignon.pokedex.api.IPokemonFactory;
-import fr.univavignon.pokedex.api.Pokemon;
-
+/**
+ * RocketPokemonFactory class.
+ */
 public class RocketPokemonFactory implements IPokemonFactory {
 
-    private static Map<Integer, String> index2name;
+    /*private static Map<Integer, String> index2name;
     static {
         Map<Integer, String> aMap = new HashMap<Integer, String>();
         aMap.put(-1, "Ash's Pikachu");
@@ -29,11 +23,11 @@ public class RocketPokemonFactory implements IPokemonFactory {
             total = total + r;
         }
         return total / 10000;
-    }
+    }*/
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        String name;
+        /*String name;
         if(!index2name.containsKey(index)) {
             name = index2name.get(0);
         } else {
@@ -54,7 +48,8 @@ public class RocketPokemonFactory implements IPokemonFactory {
             stamina = RocketPokemonFactory.generateRandomStat();
             iv = 1;
         }
-        return new Pokemon(index, name, attack, defense, stamina, cp, hp, dust, candy, iv);
+        return new Pokemon(index, name, attack, defense, stamina, cp, hp, dust, candy, iv);*/
+        return new Pokemon(index, "", 0, 0, 0, cp, hp, dust, candy, 0);
     }
 
 }
